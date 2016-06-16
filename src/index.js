@@ -35,15 +35,18 @@ const DEFAULT_LOG_LEVELS = [
 const SPLIT_CHAR = '\u0007';
 
 export default {
-  postTest: function() {
+  postTest: function(testPassed) {
     let config = this.config;
+    if (this.config.onlyFailingTests === true && testPassed === true) {
+      return true;
+    }
 
     return browser.manage().logs().get('browser')
       .then(result => {
         result = result.filter(byLogLevel, config);
 
         if (result.length === 0) {
-          return;
+          return false;
         }
 
         printHeader.call(config);

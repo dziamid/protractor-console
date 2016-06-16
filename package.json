@@ -15,7 +15,7 @@
     "console"
   ],
   "scripts": {
-    "compile": "mkdirp dist && babel -o dist/protractor-console.js src/index.js",
+    "compile": "mkdirp dist && ./node_modules/.bin/babel -o dist/protractor-console.js src/index.js",
     "test": "mocha --compilers js:babel/register",
     "prepublish": "npm run compile"
   },
