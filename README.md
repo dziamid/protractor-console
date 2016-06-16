@@ -20,10 +20,11 @@ This module is implemented as a Protractor plugin. Add it in the Protractor conf
 exports.config = {
   plugins: [{
     package: 'protractor-console',
-    logLevels: ['severe']
+    logLevels: ['severe'],
+    onlyFailingTests: false
   }],
 ```
 
 ### Configuration
 * `logLevels`: Inclusive `Array` filter for which log levels to show. Can be any of `'debug'`, `'info'`, `'warning'` and `'severe'`. Defaults to `['severe', 'warning']`.
-
+* `onlyFailingTests`: Only display logs for failing tests
